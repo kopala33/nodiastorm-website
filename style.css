@@ -1,0 +1,178 @@
+/* style.css (საბოლოო ვერსია) */
+
+:root {
+  --primary-color: #FFD700;
+  --primary-color-rgb: 255, 215, 0;
+  --dark-blue-bg: #1a1a2e;
+  --dark-blue-card-bg: #2c2c54;
+  --body-bg: #0f0f1a;
+  --text-light: #f0f0f0;
+  --text-medium: #e0e0e0;
+  --text-dark: #333;
+  --text-dark-medium: #555;
+  --white: #ffffff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    /* background-image-ს ჩატვირთავს JavaScript-ი "ზარმაცი" მეთოდით */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: var(--body-bg);
+    color: var(--text-dark);
+}
+
+* { box-sizing: border-box; }
+
+header {
+    background-color: rgba(26, 26, 46, 0.9);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+header .header-container { width: 90%; max-width: 1140px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+header .logo-link { text-decoration: none; color: var(--white); }
+header .logo-wrapper { display: flex; align-items: center; }
+header .logo-image { height: 50px; margin-right: 10px; }
+header .logo-text-main { font-size: 1.5em; font-weight: bold; color: var(--primary-color); }
+header .logo-text-slogan { font-size: 0.8em; color: #ccc; }
+header nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+header nav li { margin-left: 25px; }
+header nav a { color: var(--white); text-decoration: none; font-weight: bold; padding-bottom: 5px; transition: color 0.3s, border-color 0.3s; }
+header nav a.active, header nav a:hover { color: var(--primary-color); border-bottom: 2px solid var(--primary-color); }
+header nav a:not(.active):not(:hover) { border-bottom: 2px solid transparent; }
+
+#hero { position: relative; min-height: 450px; }
+#hero .content-wrapper { padding: 0; width: 100%; display: flex; justify-content: center; align-items: stretch; min-height: 450px; }
+#hero .hero-images-container { width: 100%; display: flex; flex-wrap: nowrap; }
+.hero-image-zoom-container { flex: 1; overflow: hidden; }
+.hero-image-content { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease-in-out; }
+.hero-image-zoom-container:hover .hero-image-content { transform: scale(1.05); }
+.hero-text-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 10; width: 90%; max-width: 1000px; }
+.hero-text-overlay .animated-text-line { margin: 0.4em 0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); opacity: 0; }
+.hero-text-overlay h1 { font-size: 2.5em; font-weight: bold; color: var(--white); animation: slideInFromTop 0.8s ease-out 0.5s forwards; }
+.hero-text-overlay .hero-subheading { font-size: 1.8em; color: var(--primary-color); font-weight: normal; animation: slideInFromTop 0.8s ease-out 1.0s forwards; }
+@keyframes slideInFromTop { 0% { transform: translateY(-120px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+@media (max-width: 992px) { .hero-text-overlay h1 { font-size: 2.2em; } .hero-text-overlay .hero-subheading { font-size: 1.6em; } }
+@media (max-width: 768px) { .hero-text-overlay h1 { font-size: 1.8em; } .hero-text-overlay .hero-subheading { font-size: 1.4em; } }
+@media (max-width: 480px) { .hero-text-overlay h1 { font-size: 1.5em; } .hero-text-overlay .hero-subheading { font-size: 1.2em; } }
+
+.section-title { font-size: 2.8em; margin-bottom: 20px; color: var(--primary-color); font-weight: bold; text-align: center; }
+.section-subtitle { margin-bottom: 50px; color: var(--text-light); font-size: 1.2em; text-align: center; }
+.section-divider { border: 0; height: 1px; background-image: linear-gradient(to right, rgba(var(--primary-color-rgb), 0), rgba(var(--primary-color-rgb), 0.75), rgba(var(--primary-color-rgb), 0)); margin: 60px 0; }
+
+#what-we-offer { padding-top: 80px; padding-bottom: 80px; background-color: var(--dark-blue-bg); color: var(--white); }
+#what-we-offer .content-wrapper { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 20px; text-align: center; }
+#what-we-offer .services-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+.service-card-what-we-offer { background-color: var(--dark-blue-card-bg); border-radius: 10px; padding: 30px; flex: 1 1 300px; max-width: 400px; box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25); text-align: left; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; min-height: 480px; }
+.service-card-what-we-offer:hover { transform: translateY(-7px); box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.35); }
+.service-card-what-we-offer img { width: 100%; height: 220px; object-fit: cover; border-radius: 6px; margin-bottom: 25px; }
+.service-card-what-we-offer h3 { font-size: 1.6em; margin-bottom: 15px; color: var(--primary-color); font-weight: bold; }
+.service-card-what-we-offer p { color: var(--text-medium); font-size: 1em; line-height: 1.7; flex-grow: 1; }
+@media (max-width: 1024px) { .service-card-what-we-offer { min-height: auto; } }
+
+#portfolio-gallery { padding-top: 80px; padding-bottom: 80px; background-color: var(--dark-blue-card-bg); color: var(--white); }
+#portfolio-gallery .content-wrapper { width: 90%; max-width: 1140px; margin: 0 auto; padding: 0 20px; text-align: center; }
+.filter-buttons { margin-bottom: 40px; text-align: center; }
+.filter-buttons button { background-color: transparent; color: var(--text-medium); border: 2px solid var(--primary-color); padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background-color 0.3s, color 0.3s; }
+.filter-buttons button:hover, .filter-buttons button.active { background-color: var(--primary-color); color: var(--dark-blue-bg); }
+.portfolio-grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.portfolio-item { aspect-ratio: 1 / 1; overflow: hidden; border-radius: 8px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); transition: transform 0.3s ease, opacity 0.3s ease; }
+.portfolio-item:hover { transform: scale(1.03); }
+.portfolio-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+#cta-power-up { padding-top: 100px; padding-bottom: 100px; position: relative; overflow: hidden; }
+#cta-power-up .content-wrapper { position: relative; text-align: center; color: var(--white); padding: 120px 20px; }
+#cta-power-up .cta-background-image-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://images.unsplash.com/photo-1600289030038-97fc9ab9fed4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'); background-size: cover; background-position: center; z-index: 0; }
+#cta-power-up .cta-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(26, 26, 46, 0.75); z-index: 1; }
+#cta-power-up .cta-text-content { position: relative; z-index: 2; }
+#cta-power-up .cta-title { font-size: 3.2em; margin-bottom: 20px; color: var(--primary-color); font-weight: bold; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); }
+#cta-power-up .cta-subtitle { font-size: 1.3em; margin-bottom: 35px; color: var(--text-light); text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); }
+#cta-power-up .cta-button { background-color: var(--primary-color); color: var(--dark-blue-bg); padding: 18px 40px; text-decoration: none; font-weight: bold; border-radius: 5px; font-size: 1.15em; display: inline-block; border: 2px solid var(--primary-color); box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); cursor: pointer; transition: background-color 0.3s, color 0.3s; }
+#cta-power-up .cta-button:hover { background-color: #e6c300; }
+
+#faq { padding-top: 80px; padding-bottom: 80px; background-color: var(--dark-blue-bg); color: var(--text-dark); }
+#faq .content-wrapper { width: 90%; max-width: 900px; margin: 0 auto; padding: 0 20px; }
+#faq .section-title { color: var(--primary-color); }
+.faq-container { margin-top: 40px; }
+.faq-item { background-color: var(--dark-blue-card-bg); border: 1px solid rgba(var(--primary-color-rgb), 0.2); border-radius: 5px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.faq-item summary { padding: 20px; font-size: 1.2em; font-weight: bold; color: var(--text-light); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; font-size: 1.5em; color: var(--primary-color); transition: transform 0.2s ease-in-out; }
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p.faq-answer { padding: 0 20px 20px 20px; font-size: 1em; line-height: 1.6; color: var(--text-medium); }
+
+/* --- მოდალის სტილები --- */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: none; justify-content: center; align-items: center; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0s linear 0.3s; }
+.modal-overlay.active { display: flex; opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0s linear 0s; }
+.modal-content { background-color: var(--white); color: var(--text-dark); padding: 30px 40px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); width: 90%; max-width: 600px; position: relative; transform: scale(0.9); transition: transform 0.3s ease; }
+.modal-overlay.active .modal-content { transform: scale(1); }
+.modal-close-button { position: absolute; top: 15px; right: 20px; font-size: 28px; font-weight: bold; color: #888; cursor: pointer; transition: color 0.2s ease; background: none; border: none; padding: 0; }
+.modal-close-button:hover { color: var(--text-dark); }
+.modal-close-button-bottom { background-color: var(--dark-blue-bg); color: var(--primary-color); padding: 10px 20px; border: none; border-radius: 5px; font-size: 1em; font-weight: bold; cursor: pointer; transition: background-color 0.3s; }
+.modal-close-button-bottom:hover { background-color: #3e3e7a; }
+
+/* "სავიზიტო ბარათის" სტილები */
+.modal-content.card-modal-content { background: var(--dark-blue-card-bg); color: var(--text-light); border-radius: 12px; border: 2px solid var(--primary-color); box-shadow: 0 0 25px rgba(var(--primary-color-rgb), 0.3); padding: 0; max-width: 500px; }
+.card-modal-content .modal-close-button { color: var(--text-medium); }
+.card-modal-content .modal-close-button:hover { color: var(--white); }
+.card-modal-header { text-align: center; padding: 30px 30px 20px 30px; border-bottom: 1px solid rgba(var(--primary-color-rgb), 0.2); }
+.card-modal-header h2 { color: var(--primary-color); font-size: 2em; margin: 0; font-weight: bold; }
+.card-modal-header p { margin: 5px 0 0 0; color: var(--text-medium); font-size: 0.9em; }
+.card-modal-body { padding: 25px 35px; }
+.card-modal-body p { line-height: 1.6; color: var(--text-medium); }
+.card-modal-content .modal-close-button-bottom { display: block; margin: 10px auto 30px auto; }
+
+/* საკონტაქტო მოდალის სპეციფიკური სტილები */
+.contact-item { display: flex; align-items: center; margin-bottom: 20px; }
+.contact-icon { flex-shrink: 0; width: 30px; height: 30px; margin-right: 20px; }
+.contact-icon svg { width: 100%; height: 100%; fill: var(--primary-color); }
+.contact-details { display: flex; flex-direction: column; }
+.contact-label { font-size: 0.8em; color: var(--text-medium); text-transform: uppercase; letter-spacing: 0.5px; }
+.contact-value { font-size: 1.1em; font-weight: 500; color: var(--white); }
+.contact-details p.contact-value { margin: 0; }
+.contact-details a.contact-value { text-decoration: none; transition: color 0.2s ease; }
+.contact-details a.contact-value:hover { color: var(--primary-color); }
+
+/* --- განახლებული Footer-ის სტილები --- */
+footer { background-color: var(--dark-blue-bg); color: #ccc; padding: 50px 20px; text-align: center; }
+footer .copyright-text { margin-bottom: 20px; font-size: 0.95em; }
+footer .footer-social-links { display: flex; justify-content: center; gap: 25px; }
+footer .footer-social-links a { color: var(--primary-color); text-decoration: none; }
+footer .footer-social-links a svg { width: 28px; height: 28px; fill: var(--primary-color); transition: fill 0.3s ease, transform 0.3s ease; }
+footer .footer-social-links a:hover svg { fill: var(--white); transform: scale(1.1); }
+
+/* === მობილურის ადაპტაცია (დამატებული) === */
+
+/* 1. Header-ის პრობლემის მოგვარება */
+@media (max-width: 768px) {
+    header .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    header nav li {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    header .logo-text-main {
+        font-size: 1.2em;
+    }
+    header .logo-text-slogan {
+        font-size: 0.7em;
+    }
+}
+
+/* 2. ფონის "ხტუნაობის" პრობლემის მოგვარება */
+@media (max-width: 992px) {
+    body {
+        background-attachment: scroll;
+    }
+}
